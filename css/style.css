@@ -1,0 +1,177 @@
+/* Estilos Generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    width: 85%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    background-color: #0056b3; /* Azul oscuro para un look profesional */
+    color: #ffffff;
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px 8px 0 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    background-color: #e9ecef;
+    margin-bottom: 10px;
+    padding: 12px 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li:hover {
+    background-color: #dee2e6;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: 500;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: #003d80;
+}
+
+/* Estilos para las páginas de contenido */
+.content-page h1, .content-page h2, .content-page h3 {
+    color: #0056b3;
+}
+
+.content-page h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.content-page h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.content-page h3 {
+    font-size: 1.2rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.content-page p, .content-page ul li, .content-page ol li {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.content-page ul, .content-page ol {
+    padding-left: 20px;
+}
+
+.content-page code {
+    background-color: #e9ecef;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 18px;
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #003d80;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9rem;
+}
+
+table th, table td {
+    border: 1px solid #dee2e6;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #e9ecef;
+    font-weight: 600;
+    color: #0056b3;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+table tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 15px auto;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .content-page h1 {
+        font-size: 1.6rem;
+    }
+
+    .content-page h2 {
+        font-size: 1.3rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto; /* Permite scroll horizontal en tablas grandes */
+        white-space: nowrap;
+    }
+}
