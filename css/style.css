@@ -174,4 +174,24 @@ table tr:hover {
         overflow-x: auto; /* Permite scroll horizontal en tablas grandes */
         white-space: nowrap;
     }
+/* Video Responsivo */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000; /* Fondo negro mientras carga el video */
+    margin-top: 15px;
+    margin-bottom: 20px; /* Espacio debajo del video */
+    border-radius: 5px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 }
