@@ -1,190 +1,304 @@
-/* Estilos Generales */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+/* Importar Fuente Inter de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variables CSS para colores y fuentes (opcional, pero bueno para consistencia) */
+:root {
+    --font-primary: 'Inter', sans-serif;
+    --color-primary: #0056b3; /* Azul principal */
+    --color-primary-dark: #003d80; /* Azul más oscuro para hovers/activos */
+    --color-secondary: #e9ecef; /* Gris claro para fondos de elementos */
+    --color-secondary-hover: #dee2e6; /* Gris un poco más oscuro para hover */
+    --color-text: #343a40; /* Color de texto principal (más oscuro que el anterior) */
+    --color-text-light: #6c757d; /* Color de texto secundario/más claro */
+    --color-background: #f8f9fa; /* Fondo general del body */
+    --color-card-background: #ffffff; /* Fondo para contenedores/tarjetas */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --box-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos Generales y Reseteo Básico */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-    color: #333;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.7; /* Mejorado para legibilidad */
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-weight: 400; /* Peso base */
+    -webkit-font-smoothing: antialiased; /* Mejora renderizado de fuentes en Webkit */
+    -moz-osx-font-smoothing: grayscale; /* Mejora renderizado de fuentes en Firefox */
 }
 
 .container {
-    width: 85%;
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 25px;
-    background-color: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    width: 90%; /* Un poco más ancho para aprovechar mejor el espacio */
+    max-width: 1200px; /* Límite máximo más generoso */
+    margin: 40px auto; /* Más margen superior/inferior */
+    padding: 30px; /* Más padding interno */
+    background-color: var(--color-card-background);
+    box-shadow: var(--box-shadow-md);
+    border-radius: var(--border-radius-md);
 }
 
+/* Encabezado */
 header {
-    background-color: #0056b3; /* Azul oscuro para un look profesional */
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
     color: #ffffff;
-    padding: 1.5rem 0;
+    padding: 2.5rem 1.5rem; /* Más padding */
     text-align: center;
-    margin-bottom: 30px;
-    border-radius: 8px 8px 0 0;
+    margin-bottom: 40px;
+    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md); /* Redondeo solo abajo */
+    box-shadow: var(--box-shadow-light);
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.2rem;
-    font-weight: 600;
+    font-size: 2.5rem; /* Ligeramente más grande */
+    font-weight: 700; /* Más peso */
+    margin-bottom: 0.5rem;
 }
 
 header p {
-    margin: 5px 0 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 300; /* Más ligero para contraste */
+    opacity: 0.9;
+}
+
+/* Navegación Principal (Índice en index.html) */
+nav h2 {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-secondary);
+    font-weight: 600;
 }
 
 nav ul {
     list-style-type: none;
-    padding: 0;
 }
 
-nav ul li {
-    background-color: #e9ecef;
-    margin-bottom: 10px;
-    padding: 12px 18px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+nav > ul > li { /* Estilo para los items de primer nivel */
+    background-color: transparent; /* Quitar fondo anterior */
+    margin-bottom: 8px;
+    border-radius: var(--border-radius-sm);
+    border-left: 3px solid transparent; /* Borde para indicar activo/hover */
+    transition: all 0.3s ease;
 }
 
-nav ul li:hover {
-    background-color: #dee2e6;
+nav > ul > li:hover {
+    background-color: var(--color-secondary);
+    border-left-color: var(--color-primary);
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #0056b3;
-    font-weight: 500;
+    color: var(--color-primary-dark);
+    font-weight: 500; /* Ligeramente más peso */
     display: block;
+    padding: 12px 18px;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
-nav ul li a:hover {
-    color: #003d80;
+nav > ul > li:hover a {
+    color: var(--color-primary-dark); /* Mantener color o ajustar si es necesario */
 }
 
-/* Estilos para las páginas de contenido */
-.content-page h1, .content-page h2, .content-page h3 {
-    color: #0056b3;
+nav ul li a:active,
+nav ul li a:focus {
+    transform: translateX(2px); /* Pequeño efecto al hacer clic/focus */
 }
 
-.content-page h1 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 10px;
+/* Sublistas de navegación */
+nav ul ul {
+    margin-top: 8px;
+    margin-left: 20px; /* Indentación para sub-items */
+    padding-left: 15px;
+    border-left: 1px dashed var(--color-secondary-hover);
 }
 
-.content-page h2 {
-    font-size: 1.5rem;
+nav ul ul li {
+    margin-bottom: 6px;
+    background-color: transparent;
+}
+nav ul ul li:hover {
+    background-color: rgba(0, 86, 179, 0.05); /* Sutil hover para sub-items */
+}
+
+nav ul ul li a {
+    font-size: 0.95em;
+    font-weight: 400;
+    color: var(--color-text);
+    padding: 8px 12px;
+}
+nav ul ul li a:hover {
+    color: var(--color-primary);
+}
+
+
+/* Estilos para las páginas de contenido (.content-page) */
+.content-page h1,
+.content-page h2,
+.content-page h3,
+.content-page h4 { /* Añadido h4 por si acaso */
+    color: var(--color-primary-dark);
+    font-weight: 600; /* Consistencia en peso para encabezados */
+}
+
+.content-page h1 { /* Título principal de la página de contenido */
+    font-size: 2rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--color-primary); /* Borde más prominente */
+    font-weight: 700;
+}
+
+.content-page h2 { /* Subtítulos principales */
+    font-size: 1.6rem;
+    margin-top: 40px; /* Más espacio antes */
+    margin-bottom: 15px;
+}
+
+.content-page h3 { /* Sub-subtítulos */
+    font-size: 1.3rem;
     margin-top: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    font-weight: 500;
 }
 
-.content-page h3 {
-    font-size: 1.2rem;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-
-.content-page p, .content-page ul li, .content-page ol li {
-    margin-bottom: 15px;
+.content-page p,
+.content-page ul li, /* Aplicar a items de lista también */
+.content-page ol li {
+    margin-bottom: 1rem; /* Usar rem para consistencia */
     text-align: justify;
+    color: var(--color-text); /* Asegurar que el texto del párrafo use el color principal */
+    font-size: 1rem; /* Tamaño base para párrafos */
 }
 
-.content-page ul, .content-page ol {
-    padding-left: 20px;
+.content-page ul,
+.content-page ol {
+    padding-left: 25px; /* Un poco más de padding */
+    margin-bottom: 1rem;
 }
+.content-page ul li::marker,
+.content-page ol li::marker {
+    color: var(--color-primary); /* Estilo para los marcadores de lista */
+}
+
 
 .content-page code {
-    background-color: #e9ecef;
-    padding: 2px 5px;
-    border-radius: 3px;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--color-secondary);
+    padding: 0.2em 0.4em; /* Usar em para que escale con la fuente */
+    border-radius: var(--border-radius-sm);
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* Mejor pila de fuentes monoespaciadas */
+    font-size: 0.9em;
+    color: var(--color-primary-dark);
 }
 
-.back-link {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 10px 18px;
-    background-color: #0056b3;
-    color: #fff;
+.content-page strong {
+    font-weight: 600; /* Hacer los 'strong' un poco más notorios */
+    color: var(--color-text);
+}
+
+.content-page a:not(.back-link) { /* Estilos para enlaces dentro del contenido */
+    color: var(--color-primary);
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-weight: 500;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.content-page a:not(.back-link):hover {
+    color: var(--color-primary-dark);
+    border-bottom-color: var(--color-primary-dark);
+}
+
+/* Enlace de "Volver al Índice" */
+.back-link {
+    display: inline-flex; /* Para alinear ícono si se añade */
+    align-items: center;
+    margin-top: 30px; /* Más espacio arriba */
+    padding: 12px 24px; /* Más padding */
+    background-color: var(--color-primary);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--box-shadow-light);
 }
 
 .back-link:hover {
-    background-color: #003d80;
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px); /* Efecto sutil al pasar el mouse */
 }
 
-/* Tabla */
+/* Tablas */
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9rem;
+    border-collapse: separate; /* Cambiado para usar border-spacing */
+    border-spacing: 0; /* Asegurar que no haya espacio si se usa separate */
+    margin: 30px 0; /* Más margen */
+    font-size: 0.95rem; /* Ligeramente más grande */
+    border: 1px solid var(--color-secondary-hover); /* Borde alrededor de la tabla */
+    border-radius: var(--border-radius-md); /* Redondear esquinas de la tabla */
+    overflow: hidden; /* Para que el border-radius afecte a las celdas */
+    box-shadow: var(--box-shadow-light);
 }
 
-table th, table td {
-    border: 1px solid #dee2e6;
-    padding: 10px 12px;
+table th,
+table td {
+    border-bottom: 1px solid var(--color-secondary-hover); /* Solo bordes horizontales */
+    padding: 14px 16px; /* Más padding */
     text-align: left;
+    vertical-align: top; /* Mejor alineación vertical */
 }
 
 table th {
-    background-color: #e9ecef;
-    font-weight: 600;
-    color: #0056b3;
+    background-color: var(--color-secondary);
+    font-weight: 600; /* Más peso */
+    color: var(--color-primary-dark);
+    border-bottom-width: 2px; /* Borde inferior más grueso para th */
 }
 
-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+table tr:last-child td {
+    border-bottom: none; /* Quitar borde inferior de la última fila */
 }
 
-table tr:hover {
-    background-color: #f1f3f5;
+table tr:nth-child(even) td { /* Estilo para filas pares, sutil */
+    background-color: rgba(248, 249, 250, 0.5); /* #f8f9fa con transparencia */
 }
 
-/* Responsividad */
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-        margin: 15px auto;
-        padding: 15px;
-    }
+table tr:hover td { /* Hover más sutil */
+    background-color: var(--color-secondary-hover);
+}
 
-    header h1 {
-        font-size: 1.8rem;
-    }
+table a { /* Estilo para enlaces dentro de tablas */
+    color: var(--color-primary);
+    font-weight: 500;
+}
+table a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
 
-    .content-page h1 {
-        font-size: 1.6rem;
-    }
 
-    .content-page h2 {
-        font-size: 1.3rem;
-    }
-
-    table {
-        display: block;
-        overflow-x: auto; /* Permite scroll horizontal en tablas grandes */
-        white-space: nowrap;
-    }
-/* Video Responsivo */
+/* Video Responsivo y Caption */
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* Proporción 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     max-width: 100%;
-    background: #000; /* Fondo negro mientras carga el video */
-    margin-top: 15px;
-    margin-bottom: 20px; /* Espacio debajo del video */
-    border-radius: 5px;
+    background: #000;
+    margin-top: 20px; /* Más margen superior */
+    margin-bottom: 10px; /* Reducir si caption tiene margen */
+    border-radius: var(--border-radius-md); /* Redondeo para videos */
+    box-shadow: var(--box-shadow-light);
 }
 
 .video-container iframe {
@@ -193,5 +307,150 @@ table tr:hover {
     left: 0;
     width: 100%;
     height: 100%;
+    border: 0; /* Quitar borde del iframe */
 }
+
+.video-caption {
+    font-size: 0.9em; /* Ligeramente más grande */
+    text-align: center;
+    color: var(--color-text-light);
+    margin-top: 8px; /* Espacio entre video y caption */
+    margin-bottom: 25px; /* Espacio después del caption */
+}
+
+/* Sección de Bienvenida en index.html */
+#bienvenida {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--color-secondary);
+}
+
+#bienvenida h2 {
+    color: var(--color-primary-dark);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#bienvenida p {
+    font-size: 1.05rem; /* Ligeramente más grande para la bienvenida */
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+
+/* Pie de Página */
+footer {
+    margin-top: 50px;
+    padding: 25px 0; /* Padding vertical */
+    background-color: var(--color-secondary); /* Fondo sutil para el footer */
+    border-top: 1px solid var(--color-secondary-hover);
+}
+
+footer .container { /* Estilo específico para el contenedor del footer */
+    background-color: transparent; /* Heredar fondo del footer */
+    box-shadow: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+/* Responsividad */
+@media (max-width: 992px) { /* Ajuste para tablets */
+    .container {
+        width: 95%;
+    }
+    header h1 {
+        font-size: 2.2rem;
+    }
+    .content-page h1 {
+        font-size: 1.8rem;
+    }
+    .content-page h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) { /* Ajustes para móviles */
+    body {
+        font-size: 15px; /* Ligeramente más pequeño para móviles, Inter lo maneja bien */
+    }
+    .container {
+        width: 100%;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 0; /* Sin redondeo en móviles para aprovechar espacio */
+        box-shadow: none; /* Quitar sombra en móviles si se prefiere */
+    }
+
+    header {
+        padding: 2rem 1rem;
+        margin-bottom: 20px;
+        border-radius: 0;
+    }
+
+    header h1 {
+        font-size: 1.9rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+
+    nav h2 {
+        font-size: 1.3rem;
+    }
+
+    .content-page h1 {
+        font-size: 1.7rem;
+    }
+
+    .content-page h2 {
+        font-size: 1.4rem;
+        margin-top: 30px;
+    }
+    .content-page h3 {
+        font-size: 1.2rem;
+    }
+    .content-page p,
+    .content-page ul li,
+    .content-page ol li {
+        font-size: 0.95rem; /* Ajustar tamaño de párrafo en móviles */
+    }
+
+
+    table {
+        font-size: 0.85rem; /* Reducir fuente de tabla en móviles */
+    }
+    table th, table td {
+        padding: 10px 8px; /* Menos padding en celdas */
+    }
+    /* Para tablas que aún son muy anchas, el scroll horizontal es una buena solución */
+    .table-responsive-wrapper { /* Envolver la tabla en este div si es necesario */
+        overflow-x: auto;
+        margin: 20px 0;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    }
+}
+
+@media (max-width: 480px) { /* Ajustes más finos para pantallas pequeñas */
+    header h1 {
+        font-size: 1.7rem;
+    }
+    header p {
+        font-size: 0.9rem;
+    }
+    .content-page h1 {
+        font-size: 1.5rem;
+    }
+    .content-page h2 {
+        font-size: 1.3rem;
+    }
+     .back-link {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
 }
